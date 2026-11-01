@@ -13,7 +13,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<!-- PIXEL META AQUI -->
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1550965923758076');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1550965923758076&ev=PageView&noscript=1"></noscript>
+<!-- /Meta Pixel -->
 <!-- UTMIFY AQUI -->
 <style>
 :root{--vinho:#5e0c16;--vinho2:#7a0f1c;--creme:#fdf6e3;--creme2:#f6e9c6;--ouro:#d9a93a;--ouro2:#f0cd75;--verde:#1d6b3e;--verde2:#14522e;--texto:#2a1a1c;--cinza:#6b5b5d}
@@ -306,7 +312,7 @@ const SUPORTE_EMAIL = "matheushenriquecalifla@gmail.com"; // preencher com o e-m
 (function () {
   var qs = new URLSearchParams(location.search), out = new URL(CHECKOUT_URL);
   ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck","fbclid"].forEach(function (k) { if (qs.get(k)) out.searchParams.set(k, qs.get(k)); });
-  document.querySelectorAll("[data-checkout]").forEach(function (a) { a.href = out.toString(); });
+  document.querySelectorAll("[data-checkout]").forEach(function (a) { a.href = out.toString(); a.addEventListener("click", function () { if (window.fbq) fbq("track", "InitiateCheckout"); }); });
 })();
 
 // dias reais até o Natal
